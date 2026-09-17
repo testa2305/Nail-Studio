@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nail Studio 💅</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Arial",sans-serif;
+}
+
+body{
+    min-height:100vh;
+    color:#55253f;
+    background:
+        radial-gradient(circle at 10% 10%,rgba(255,255,255,.8),transparent 25%),
+        radial-gradient(circle at 90% 20%,rgba(255,190,220,.4),transparent 25%),
+        linear-gradient(135deg,#f8c8dc,#ead5f8 50%,#f8d9c8);
+    padding:20px;
+}
+
+/* ==============================
+   SALÃO
+============================== */
+
+.salon{
+    max-width:1250px;
+    margin:auto;
+    min-height:calc(100vh - 40px);
+    border-radius:30px;
+    overflow:hidden;
+    background:rgba(255,255,255,.94);
+    box-shadow:0 25px 70px rgba(100,35,70,.25);
+    border:1px solid rgba(255,255,255,.8);
+}
+
+.topbar{
+    height:85px;
+    padding:15px 30px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:linear-gradient(90deg,#fff,#fff3f9);
+    border-bottom:1px solid #f2d8e5;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-icon{
+    width:52px;
+    height:52px;
+    border-radius:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#d92b79,#a91b68);
+    color:white;
+    font-size:27px;
+    box-shadow:0 8px 20px rgba(192,38,114,.25);
+}
+
+.logo h1{
+    font-size:25px;
+    color:#a91b68;
+}
+
+.logo small{
+    color:#987687;
+}
+
+.stats{
+    display:flex;
+    gap:10px;
+}
+
+.stat{
+    padding:9px 15px;
+    border-radius:15px;
+    background:#fff0f7;
+    font-weight:bold;
+    color:#a91b68;
+}
+
+.game{
+    display:grid;
+    grid-template-columns:1.35fr .9fr;
+    min-height:700px;
+}
+
+/* ==============================
+   ÁREA DE TRABALHO
+============================== */
+
+.workspace{
+    position:relative;
+    padding:35px;
+    overflow:hidden;
+    background:
+        linear-gradient(rgba(255,255,255,.15),rgba(255,255,255,.15)),
+        repeating-linear-gradient(
+            90deg,
+            #d9a27d 0px,
+            #d9a27d 55px,
+            #cf956f 57px,
+            #d9a27d 100px
+        );
+}
+
+.window{
+    position:absolute;
+    top:20px;
+    left:25px;
+    width:190px;
+    height:115px;
+    border:10px solid #fff;
+    border-radius:12px;
+    background:
+        linear-gradient(135deg,#bdeeff,#fff3fb);
+    box-shadow:0 8px 20px rgba(80,40,50,.18);
+}
+
+.window:after{
+    content:"";
+    position:absolute;
+    inset:50% 0 auto;
+    border-top:5px solid white;
+}
+
+.plant{
+    position:absolute;
+    right:30px;
+    top:25px;
+    font-size:60px;
+}
+
+.workspace-title{
+    text-align:center;
+    position:relative;
+    z-index:2;
+    margin-bottom:20px;
+}
+
+.workspace-title h2{
+    color:#7e3158;
+    font-size:24px;
+}
+
+.workspace-title p{
+    color:#8f6979;
+}
+
+/* Mesa */
+
+.table{
+    position:relative;
+    z-index:3;
+    max-width:650px;
+    height:570px;
+    margin:0 auto;
+    border-radius:30px;
+    padding:20px;
+    background:linear-gradient(145deg,#fffafc,#f8e4ed);
+    box-shadow:
+        0 20px 35px rgba(70,35,40,.25),
+        inset 0 0 0 1px white;
+}
+
+/* ==============================
+   MÃO
+============================== */
+
+.hand-wrapper{
+    height:400px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.hand{
+    position:relative;
+    width:330px;
+    height:270px;
+    background:
+        linear-gradient(145deg,#f7c7ad,#e9ad91);
+    border-radius:48% 52% 42% 45%;
+    box-shadow:
+        inset -15px -12px 25px rgba(160,80,60,.12),
+        inset 10px 10px 18px rgba(255,255,255,.25),
+        0 18px 30px rgba(100,50,40,.2);
+}
+
+/* dedos */
+
+.finger{
+    position:absolute;
+    background:linear-gradient(90deg,#e9ad91,#f7c7ad,#e4a98d);
+    border-radius:40px 40px 25px 25px;
+    box-shadow:
+        inset -7px 0 12px rgba(150,70,60,.12);
+}
+
+.finger1{
+    width:58px;
+    height:150px;
+    left:-5px;
+    top:-70px;
+    transform:rotate(-27deg);
+}
+
+.finger2{
+    width:60px;
+    height:195px;
+    left:65px;
+    top:-125px;
+}
+
+.finger3{
+    width:62px;
+    height:215px;
+    left:135px;
+    top:-145px;
+}
+
+.finger4{
+    width:60px;
+    height:195px;
+    left:205px;
+    top:-125px;
+}
+
+.finger5{
+    width:57px;
+    height:145px;
+    left:270px;
+    top:-68px;
+    transform:rotate(27deg);
+}
+
+/* detalhes da pele */
+
+.finger:after{
+    content:"";
+    position:absolute;
+    width:65%;
+    height:30px;
+    bottom:15px;
+    left:18%;
+    border-bottom:2px solid rgba(170,90,75,.18);
+    border-radius:50%;
+}
+
+/* ==============================
+   UNHAS
+============================== */
+
+.nail{
+    position:absolute;
+    width:43px;
+    height:61px;
+    z-index:10;
+    cursor:pointer;
+
+    background:
+        linear-gradient(145deg,#fff4ef,#f5d4cb);
+
+    border:2px solid #d99e91;
+
+    border-radius:50% 50% 38% 38%;
+
+    box-shadow:
+        inset 4px 5px 8px rgba(255,255,255,.8),
+        inset -4px -5px 8px rgba(170,90,80,.12);
+
+    transition:.25s;
+}
+
+.nail:hover{
+    transform:translateY(-5px) scale(1.06);
+}
+
+.nail.selected{
+    outline:4px solid #d92b79;
+    outline-offset:3px;
+}
+
+.nail1{
+    left:5px;
+    top:-63px;
+    transform:rotate(-27deg);
+}
+
+.nail2{
+    left:74px;
+    top:-119px;
+}
+
+.nail3{
+    left:145px;
+    top:-139px;
+}
+
+.nail4{
+    left:215px;
+    top:-119px;
+}
+
+.nail5{
+    left:274px;
+    top:-62px;
+    transform:rotate(27deg);
+}
+
+.nail.glitter{
+    animation:glow 1.2s infinite alternate;
+}
+
+@keyframes glow{
+    from{filter:brightness(1);}
+    to{filter:brightness(1.25) drop-shadow(0 0 8px #ffd85c);}
+}
+
+/* ==============================
+   PRODUTOS NA MESA
+============================== */
+
+.products{
+    display:flex;
+    justify-content:center;
+    align-items:end;
+    gap:18px;
+    height:120px;
+}
+
+.product{
+    width:70px;
+    height:85px;
+    border-radius:10px 10px 18px 18px;
+    position:relative;
+    cursor:pointer;
+    transition:.2s;
+    box-shadow:0 8px 12px rgba(70,30,40,.2);
+}
+
+.product:hover{
+    transform:translateY(-7px);
+}
+
+.product:before{
+    content:"";
+    position:absolute;
+    width:35px;
+    height:20px;
+    left:17px;
+    top:-15px;
+    border-radius:5px 5px 2px 2px;
+    background:#eee;
+}
+
+.product span{
+    position:absolute;
+    bottom:10px;
+    width:100%;
+    text-align:center;
+    color:white;
+    font-size:10px;
+    font-weight:bold;
+}
+
+.scrub{
+    background:linear-gradient(#ffc5dc,#e67da8);
+}
+
+.cream{
+    background:linear-gradient(#fff,#e9c4ff);
+}
+
+.oil{
+    background:linear-gradient(#ffe18b,#eab52f);
+}
+
+.sanitizer{
+    background:linear-gradient(#b7edff,#68bad6);
+}
+
+/* ==============================
+   PAINEL
+============================== */
+
+.panel{
+    padding:25px;
+    background:#fffafd;
+    border-left:1px solid #efdce6;
+    overflow-y:auto;
+}
+
+.panel-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.panel-title h2{
+    color:#9f2167;
+}
+
+.level{
+    background:#fff0f7;
+    border-radius:15px;
+    padding:8px 12px;
+    color:#b21d68;
+    font-weight:bold;
+}
+
+.progress{
+    height:8px;
+    border-radius:20px;
+    background:#f1dbe6;
+    margin-bottom:22px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,#e52c83,#a51a70);
+    transition:.4s;
+}
+
+/* etapas */
+
+.steps{
+    display:flex;
+    gap:6px;
+    margin-bottom:25px;
+}
+
+.step{
+    flex:1;
+    text-align:center;
+    padding:9px 3px;
+    border-radius:12px;
+    background:#f7eaf0;
+    font-size:11px;
+    color:#987587;
+}
+
+.step.active{
+    background:#d92b79;
+    color:white;
+}
+
+.step.done{
+    background:#aee8cb;
+    color:#28704d;
+}
+
+/* seção */
+
+.section{
+    margin-bottom:24px;
+}
+
+.section h3{
+    color:#7d3157;
+    margin-bottom:12px;
+    font-size:16px;
+}
+
+.tools{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+}
+
+.tool{
+    border:1px solid #efd5e2;
+    background:#fff;
+    padding:12px;
+    border-radius:15px;
+    cursor:pointer;
+    color:#753250;
+    font-weight:bold;
+    transition:.2s;
+}
+
+.tool:hover{
+    background:#fff0f7;
+    transform:translateY(-2px);
+}
+
+.tool.used{
+    background:#d7f4e5;
+    border-color:#9bd7b8;
+    color:#27724e;
+}
+
+/* esmaltes */
+
+.colors{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:9px;
+}
+
+.polish{
+    height:70px;
+    border-radius:12px;
+    cursor:pointer;
+    position:relative;
+    box-shadow:0 5px 10px rgba(60,30,40,.2);
+    transition:.2s;
+}
+
+.polish:hover{
+    transform:translateY(-4px);
+}
+
+.polish:before{
+    content:"";
+    position:absolute;
+    top:-8px;
+    left:12px;
+    right:12px;
+    height:12px;
+    background:#222;
+    border-radius:4px 4px 2px 2px;
+}
+
+.polish span{
+    position:absolute;
+    bottom:5px;
+    left:0;
+    width:100%;
+    text-align:center;
+    color:white;
+    font-size:9px;
+    font-weight:bold;
+    text-shadow:0 1px 2px #555;
+}
+
+.p1{background:#ff4f91}
+.p2{background:#d91e48}
+.p3{background:#9333ea}
+.p4{background:#3b82f6}
+.p5{background:#22c55e}
+.p6{background:#facc15}
+.p7{background:#f97316}
+.p8{background:#171717}
+.p9{background:#fff}
+.p10{background:#d59a72}
+
+/* botões */
+
+.buttons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+}
+
+button{
+    border:none;
+    padding:12px;
+    border-radius:14px;
+    cursor:pointer;
+    background:#f5d8e6;
+    color:#7b2852;
+    font-weight:bold;
+    transition:.2s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+}
+
+button:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+}
+
+.finish{
+    width:100%;
+    padding:15px;
+    color:white;
+    background:linear-gradient(90deg,#d92b79,#a91b68);
+    font-size:16px;
+    box-shadow:0 8px 20px rgba(192,38,114,.25);
+}
+
+.clear{
+    width:100%;
+    margin-top:8px;
+    background:#eee;
+}
+
+/* mensagem */
+
+.message{
+    margin-top:15px;
+    padding:14px;
+    border-radius:15px;
+    background:#fff0f7;
+    color:#9b2864;
+    text-align:center;
+    font-size:13px;
+    min-height:45px;
+}
+
+/* ==============================
+   MODAL
+============================== */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(60,20,40,.55);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:100;
+    padding:20px;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    max-width:450px;
+    width:100%;
+    padding:35px;
+    border-radius:28px;
+    background:white;
+    text-align:center;
+    box-shadow:0 25px 60px rgba(0,0,0,.3);
+}
+
+.modal-box h2{
+    color:#c02672;
+    margin-bottom:10px;
+}
+
+.modal-score{
+    font-size:42px;
+    font-weight:bold;
+    color:#a91b68;
+    margin:15px;
+}
+
+.modal-box button{
+    width:100%;
+    background:#c02672;
+    color:white;
+}
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media(max-width:900px){
+
+    .game{
+        grid-template-columns:1fr;
+    }
+
+    .panel{
+        border-left:none;
+        border-top:1px solid #efdce6;
+    }
+
+    .workspace{
+        min-height:650px;
+    }
+}
+
+@media(max-width:550px){
+
+    body{
+        padding:5px;
+    }
+
+    .salon{
+        border-radius:20px;
+    }
+
+    .topbar{
+        padding:12px;
+    }
+
+    .logo h1{
+        font-size:18px;
+    }
+
+    .stats{
+        display:none;
+    }
+
+    .workspace{
+        padding:15px;
+    }
+
+    .table{
+        transform:scale(.86);
+        transform-origin:top center;
+        margin-bottom:-70px;
+    }
+
+    .panel{
+        padding:18px;
+    }
+
+    .colors{
+        grid-template-columns:repeat(5,1fr);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="salon">
+
+<header class="topbar">
+
+    <div class="logo">
+
+        <div class="logo-icon">💅</div>
+
+        <div>
+            <h1>Pink Bloom Studio</h1>
+            <small>Simulador de Nail Designer</small>
+        </div>
+
+    </div>
+
+    <div class="stats">
+
+        <div class="stat">
+            ⭐ XP <span id="xp">0</span>
+        </div>
+
+        <div class="stat">
+            🪙 <span id="coins">100</span>
+        </div>
+
+    </div>
+
+</header>
+
+
+<div class="game">
+
+<!-- =========================
+     ESPAÇO DO SALÃO
+========================= -->
+
+<section class="workspace">
+
+    <div class="window"></div>
+
+    <div class="plant">🌿</div>
+
+    <div class="workspace-title">
+
+        <h2>✨ Sua cliente chegou!</h2>
+
+        <p>Prepare as mãos antes de começar a nail art.</p>
+
+    </div>
+
+
+    <div class="table">
+
+        <div class="hand-wrapper">
+
+            <div class="hand">
+
+                <div class="finger finger1"></div>
+                <div class="finger finger2"></div>
+                <div class="finger finger3"></div>
+                <div class="finger finger4"></div>
+                <div class="finger finger5"></div>
+
+                <div class="nail nail1" data-id="1"></div>
+                <div class="nail nail2" data-id="2"></div>
+                <div class="nail nail3" data-id="3"></div>
+                <div class="nail nail4" data-id="4"></div>
+                <div class="nail nail5" data-id="5"></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="products">
+
+            <div class="product sanitizer"
+                 onclick="useProduct('sanitizer')">
+                <span>HIGIENIZANTE</span>
+            </div>
+
+            <div class="product scrub"
+                 onclick="useProduct('scrub')">
+                <span>ESFOLIANTE</span>
+            </div>
+
+            <div class="product cream"
+                 onclick="useProduct('cream')">
+                <span>HIDRATANTE</span>
+            </div>
+
+            <div class="product oil"
+                 onclick="useProduct('oil')">
+                <span>ÓLEO</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PAINEL
+========================= -->
+
+<aside class="panel">
+
+    <div class="panel-title">
+
+        <h2>💗 Atendimento</h2>
+
+        <div class="level">
+            Nível <span id="level">1</span>
+        </div>
+
+    </div>
+
+
+    <div class="progress">
+
+        <div class="progress-bar" id="progress"></div>
+
+    </div>
+
+
+    <div class="steps">
+
+        <div class="step active" id="step1">
+            🫧<br>Preparar
+        </div>
+
+        <div class="step" id="step2">
+            ✂️<br>Cuidados
+        </div>
+
+        <div class="step" id="step3">
+            🎨<br>Esmaltar
+        </div>
+
+        <div class="step" id="step4">
+            ✨<br>Decorar
+        </div>
+
+    </div>
+
+
+    <!-- PREPARAÇÃO -->
+
+    <div class="section">
+
+        <h3>🧴 Preparação das mãos</h3>
+
+        <div class="tools">
+
+            <button class="tool"
+                    id="tool-sanitizer"
+                    onclick="useProduct('sanitizer')">
+                🫧 Higienizar
+            </button>
+
+            <button class="tool"
+                    id="tool-scrub"
+                    onclick="useProduct('scrub')">
+                🌸 Esfoliar
+            </button>
+
+            <button class="tool"
+                    id="tool-cream"
+                    onclick="useProduct('cream')">
+                🧴 Hidratar
+            </button>
+
+            <button class="tool"
+                    id="tool-oil"
+                    onclick="useProduct('oil')">
+                ✨ Óleo de cutícula
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- FORMATO -->
+
+    <div class="section">
+
+        <h3>💅 Formato da unha</h3>
+
+        <div class="buttons">
+
+            <button onclick="changeShape('oval')">
+                Oval
+            </button>
+
+            <button onclick="changeShape('square')">
+                Quadrada
+            </button>
+
+            <button onclick="changeShape('almond')">
+                Amendoada
+            </button>
+
+            <button onclick="changeShape('stiletto')">
+                Stiletto
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- CORES -->
+
+    <div class="section">
+
+        <h3>🎨 Coleção de esmaltes</h3>
+
+        <div class="colors">
+
+            <div class="polish p1"
+                 onclick="paint('#ff4f91')">
+                <span>Pink</span>
+            </div>
+
+            <div class="polish p2"
+                 onclick="paint('#d91e48')">
+                <span>Ruby</span>
+            </div>
+
+            <div class="polish p3"
+                 onclick="paint('#9333ea')">
+                <span>Lavender</span>
+            </div>
+
+            <div class="polish p4"
+                 onclick="paint('#3b82f6')">
+                <span>Blue</span>
+            </div>
+
+            <div class="polish p5"
+                 onclick="paint('#22c55e')">
+                <span>Mint</span>
+            </div>
+
+            <div class="polish p6"
+                 onclick="paint('#facc15')">
+                <span>Gold</span>
+            </div>
+
+            <div class="polish p7"
+                 onclick="paint('#f97316')">
+                <span>Coral</span>
+            </div>
+
+            <div class="polish p8"
+                 onclick="paint('#171717')">
+                <span>Black</span>
+            </div>
+
+            <div class="polish p9"
+                 onclick="paint('#ffffff')">
+                <span>Nude</span>
+            </div>
+
+            <div class="polish p10"
+                 onclick="paint('#d59a72')">
+                <span>Mocha</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- DECORAÇÃO -->
+
+    <div class="section">
+
+        <h3>✨ Nail Art</h3>
+
+        <div class="buttons">
+
+            <button onclick="decoration('🌸')">
+                🌸 Flores
+            </button>
+
+            <button onclick="decoration('💎')">
+                💎 Cristal
+            </button>
+
+            <button onclick="decoration('⭐')">
+                ⭐ Estrela
+            </button>
+
+            <button onclick="decoration('💖')">
+                💖 Coração
+            </button>
+
+            <button onclick="decoration('✨')">
+                ✨ Brilho
+            </button>
+
+            <button onclick="addFrench()">
+                🤍 Francesinha
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="section">
+
+        <h3>✨ Acabamento</h3>
+
+        <div class="buttons">
+
+            <button onclick="addGlitter()">
+                ✨ Glitter
+            </button>
+
+            <button onclick="removeGlitter()">
+                Remover
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <button class="finish"
+            onclick="finishGame()">
+        💖 Finalizar atendimento
+    </button>
+
+    <button class="clear"
+            onclick="clearGame()">
+        🧼 Nova cliente
+    </button>
+
+
+    <div class="message"
+         id="message">
+
+        🫧 Comece higienizando as mãos da cliente.
+
+    </div>
+
+</aside>
+
+</div>
+</div>
+
+
+<!-- MODAL -->
+
+<div class="modal" id="modal">
+
+    <div class="modal-box">
+
+        <h2>💖 Atendimento concluído!</h2>
+
+        <p>Sua cliente adorou o resultado.</p>
+
+        <div class="modal-score">
+            <span id="finalScore">0</span>
+        </div>
+
+        <p>
+            ⭐ XP ganho:
+            <b id="finalXP">0</b>
+        </p>
+
+        <br>
+
+        <button onclick="closeModal()">
+            Continuar trabalhando 💅
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =====================================
+   ESTADO DO JOGO
+===================================== */
+
+let selectedNail = null;
+
+let xp = 0;
+let coins = 100;
+
+let score = 0;
+
+let currentStep = 1;
+
+let preparation = {
+    sanitizer:false,
+    scrub:false,
+    cream:false,
+    oil:false
+};
+
+const nails = document.querySelectorAll(".nail");
+
+
+/* =====================================
+   SELECIONAR UNHA
+===================================== */
+
+nails.forEach(nail => {
+
+    nail.addEventListener("click",()=>{
+
+        nails.forEach(n =>
+            n.classList.remove("selected")
+        );
+
+        nail.classList.add("selected");
+
+        selectedNail = nail;
+
+        message(
+            "💅 Unha selecionada! Agora escolha o procedimento."
+        );
+
+    });
+
+});
+
+
+/* =====================================
+   PRODUTOS
+===================================== */
+
+function useProduct(product){
+
+    if(preparation[product]){
+
+        message("✨ Esse produto já foi utilizado.");
+
+        return;
+    }
+
+
+    preparation[product] = true;
+
+
+    const button =
+        document.getElementById("tool-"+product);
+
+    if(button){
+
+        button.classList.add("used");
+
+        button.innerHTML =
+            "✓ " + button.innerHTML;
+    }
+
+
+    xp += 10;
+    score += 5;
+
+
+    const names = {
+
+        sanitizer:"🫧 Mãos higienizadas!",
+        scrub:"🌸 Esfoliação concluída!",
+        cream:"🧴 Hidratação concluída!",
+        oil:"✨ Cutículas hidratadas!"
+
+    };
+
+
+    message(names[product]);
+
+    updateStats();
+
+    checkPreparation();
+
+}
+
+
+/* =====================================
+   CHECAR PREPARAÇÃO
+===================================== */
+
+function checkPreparation(){
+
+    const complete =
+        Object.values(preparation)
+        .every(Boolean);
+
+
+    if(!complete) return;
+
+
+    currentStep = 2;
+
+    setStep(1,true);
+    setStep(2,true);
+
+    message(
+        "✨ Preparação completa! Agora escolha o formato das unhas."
+    );
+
+    updateProgress();
+
+}
+
+
+/* =====================================
+   FORMATO
+===================================== */
+
+function changeShape(shape){
+
+    if(!Object.values(preparation).every(Boolean)){
+
+        message(
+            "🧴 Primeiro finalize todos os cuidados das mãos."
+        );
+
+        return;
+    }
+
+
+    if(selectedNail === null){
+
+        message(
+            "💅 Clique em uma unha primeiro."
+        );
+
+        return;
+    }
+
+
+    selectedNail.classList.remove("selected");
+
+
+    if(shape==="oval"){
+
+        selectedNail.style.borderRadius =
+            "50%";
+
+        selectedNail.style.height =
+            "61px";
+    }
+
+
+    if(shape==="square"){
+
+        selectedNail.style.borderRadius =
+            "7px";
+
+        selectedNail.style.height =
+            "58px";
+    }
+
+
+    if(shape==="almond"){
+
+        selectedNail.style.borderRadius =
+            "50% 50% 25% 25%";
+
+        selectedNail.style.height =
+            "66px";
+    }
+
+
+    if(shape==="stiletto"){
+
+        selectedNail.style.borderRadius =
+            "50% 50% 5% 5%";
+
+        selectedNail.style.height =
+            "78px";
+
+        selectedNail.style.clipPath =
+            "polygon(50% 0%,100% 28%,85% 100%,15% 100%,0 28%)";
+    }
+
+
+    xp += 8;
+    score += 5;
+
+    currentStep = 3;
+
+    setStep(2,true);
+    setStep(3,true);
+
+    message(
+        "🎨 Formato definido! Escolha sua cor favorita."
+    );
+
+    updateStats();
+    updateProgress();
+
+}
+
+
+/* =====================================
+   ESMALTE
+===================================== */
+
+function paint(color){
+
+    if(!Object.values(preparation).every(Boolean)){
+
+        message(
+            "🫧 Termine a preparação antes de esmaltar."
+        );
+
+        return;
+    }
+
+
+    if(selectedNail === null){
+
+        message(
+            "💅 Selecione uma unha para pintar."
+        );
+
+        return;
+    }
+
+
+    selectedNail.style.background =
+        color;
+
+    selectedNail.style.boxShadow =
+        `
+        inset 4px 5px 8px rgba(255,255,255,.45),
+        inset -5px -5px 8px rgba(0,0,0,.15),
+        0 4px 8px rgba(70,30,40,.15)
+        `;
+
+
+    xp += 12;
+    score += 8;
+
+    currentStep = 3;
+
+    message(
+        "🎨 Esmalte aplicado com acabamento brilhante!"
+    );
+
+    updateStats();
+
+}
+
+
+/* =====================================
+   DECORAÇÃO
+===================================== */
+
+function decoration(symbol){
+
+    if(selectedNail === null){
+
+        message(
+            "💅 Escolha uma unha primeiro."
+        );
+
+        return;
+    }
+
+
+    selectedNail.innerHTML =
+        `<span style="
+        font-size:20px;
+        filter:drop-shadow(0 1px 2px rgba(0,0,0,.3));
+        ">${symbol}</span>`;
+
+
+    xp += 15;
+    score += 10;
+
+    currentStep = 4;
+
+    setStep(3,true);
+    setStep(4,true);
+
+    message(
+        "✨ Decoração aplicada!"
+    );
+
+    updateStats();
+    updateProgress();
+
+}
+
+
+/* =====================================
+   FRANCESINHA
+===================================== */
+
+function addFrench(){
+
+    if(selectedNail === null){
+
+        message(
+            "💅 Selecione uma unha primeiro."
+        );
+
+        return;
+    }
+
+
+    selectedNail.style.background =
+        `
+        linear-gradient(
+            to bottom,
+            #fff8f5 0%,
+            #fff8f5 72%,
+            #ffffff 73%,
+            #ffffff 100%
+        )
+        `;
+
+
+    xp += 15;
+    score += 10;
+
+    message(
+        "🤍 Francesinha perfeita!"
+    );
+
+    updateStats();
+
+}
+
+
+/* =====================================
+   GLITTER
+===================================== */
+
+function addGlitter(){
+
+    if(selectedNail === null){
+
+        message(
+            "💅 Selecione uma unha primeiro."
+        );
+
+        return;
+    }
+
+
+    selectedNail.classList.add("glitter");
+
+    xp += 10;
+    score += 8;
+
+    message(
+        "✨ Glitter aplicado!"
+    );
+
+    updateStats();
+
+}
+
+
+function removeGlitter(){
+
+    if(selectedNail === null) return;
+
+    selectedNail.classList.remove("glitter");
+
+    message(
+        "✨ Glitter removido."
+    );
+
+}
+
+
+/* =====================================
+   FINALIZAR
+===================================== */
+
+function finishGame(){
+
+    const preparationComplete =
+        Object.values(preparation)
+        .every(Boolean);
+
+
+    if(!preparationComplete){
+
+        message(
+            "🧴 Ainda falta preparar completamente as mãos."
+        );
+
+        return;
+    }
+
+
+    if(score===0){
+
+        message(
+            "💅 Faça a nail art antes de finalizar."
+        );
+
+        return;
+    }
+
+
+    const finalScore =
+        Math.min(100,score);
+
+
+    const gainedXP =
+        Math.round(finalScore * 1.5);
+
+
+    xp += gainedXP;
+
+    coins += Math.round(finalScore/10);
+
+
+    document.getElementById("finalScore")
+        .textContent =
+        finalScore + "/100";
+
+
+    document.getElementById("finalXP")
+        .textContent =
+        gainedXP;
+
+
+    document.getElementById("modal")
+        .classList.add("show");
+
+
+    updateStats();
+
+}
+
+
+/* =====================================
+   RESET
+===================================== */
+
+function clearGame(){
+
+    nails.forEach(nail=>{
+
+        nail.style.background =
+            "linear-gradient(145deg,#fff4ef,#f5d4cb)";
+
+        nail.style.borderRadius =
+            "50% 50% 38% 38%";
+
+        nail.style.height =
+            "61px";
+
+        nail.style.boxShadow =
+            `
+            inset 4px 5px 8px rgba(255,255,255,.8),
+            inset -4px -5px 8px rgba(170,90,80,.12)
+            `;
+
+        nail.style.clipPath =
+            "none";
+
+        nail.innerHTML="";
+
+        nail.classList.remove(
+            "selected",
+            "glitter"
+        );
+
+    });
+
+
+    selectedNail=null;
+
+    score=0;
+
+    preparation={
+        sanitizer:false,
+        scrub:false,
+        cream:false,
+        oil:false
+    };
+
+
+    [
+        "sanitizer",
+        "scrub",
+        "cream",
+        "oil"
+    ].forEach(p=>{
+
+        const btn =
+            document.getElementById("tool-"+p);
+
+        btn.classList.remove("used");
+
+    });
+
+
+    document.getElementById("tool-sanitizer")
+        .innerHTML="🫧 Higienizar";
+
+    document.getElementById("tool-scrub")
+        .innerHTML="🌸 Esfoliar";
+
+    document.getElementById("tool-cream")
+        .innerHTML="🧴 Hidratar";
+
+    document.getElementById("tool-oil")
+        .innerHTML="✨ Óleo de cutícula";
+
+
+    currentStep=1;
+
+    setStep(1,true);
+    setStep(2,false);
+    setStep(3,false);
+    setStep(4,false);
+
+    updateProgress();
+
+    message(
+        "🫧 Nova cliente! Comece higienizando as mãos."
+    );
+
+}
+
+
+/* =====================================
+   ETAPAS
+===================================== */
+
+function setStep(number,done){
+
+    const el =
+        document.getElementById("step"+number);
+
+    el.classList.toggle("done",done);
+    el.classList.toggle(
+        "active",
+        currentStep===number
+    );
+
+}
+
+
+/* =====================================
+   PROGRESSO
+===================================== */
+
+function updateProgress(){
+
+    const percentage =
+        ((currentStep-1)/3)*100;
+
+    document.getElementById("progress")
+        .style.width =
+        percentage+"%";
+
+}
+
+
+/* =====================================
+   XP / NÍVEL
+===================================== */
+
+function updateStats(){
+
+    document.getElementById("xp")
+        .textContent= xp;
+
+    document.getElementById("coins")
+        .textContent= coins;
+
+    const level =
+        Math.floor(xp/100)+1;
+
+    document.getElementById("level")
+        .textContent=level;
+
+}
+
+
+/* =====================================
+   MENSAGEM
+===================================== */
+
+function message(text){
+
+    document.getElementById("message")
+        .textContent=text;
+
+}
+
+
+/* =====================================
+   MODAL
+===================================== */
+
+function closeModal(){
+
+    document.getElementById("modal")
+        .classList.remove("show");
+
+}
+
+
+/* =====================================
+   INICIALIZAÇÃO
+===================================== */
+
+updateStats();
+updateProgress();
+
+</script>
+
+</body>
+</html>
