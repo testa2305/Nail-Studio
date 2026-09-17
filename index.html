@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nail Studio 💅</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffd6e7, #e9d5ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .game {
+            width: 100%;
+            max-width: 1100px;
+            background: white;
+            border-radius: 30px;
+            padding: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #c02672;
+            font-size: 38px;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        .game-area {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        /* ÁREA DA MÃO */
+
+        .hand-area {
+            background: #ffeaf4;
+            border-radius: 25px;
+            min-height: 520px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hand {
+            position: relative;
+            width: 300px;
+            height: 300px;
+
+            background: #f2c4a8;
+
+            border-radius: 50% 50% 45% 45%;
+        }
+
+        /* DEDOS */
+
+        .finger {
+            position: absolute;
+            width: 55px;
+            background: #f2c4a8;
+            border-radius: 30px;
+        }
+
+        .finger1 {
+            height: 150px;
+            left: 10px;
+            top: -105px;
+            transform: rotate(-20deg);
+        }
+
+        .finger2 {
+            height: 180px;
+            left: 70px;
+            top: -145px;
+        }
+
+        .finger3 {
+            height: 195px;
+            left: 125px;
+            top: -160px;
+        }
+
+        .finger4 {
+            height: 180px;
+            left: 180px;
+            top: -145px;
+        }
+
+        .finger5 {
+            height: 145px;
+            left: 235px;
+            top: -105px;
+            transform: rotate(20deg);
+        }
+
+        /* UNHAS */
+
+        .nail {
+            position: absolute;
+
+            width: 43px;
+            height: 65px;
+
+            background: #ffe1d8;
+
+            border: 3px solid #d79b8b;
+
+            border-radius: 25px 25px 15px 15px;
+
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 20px;
+
+            transition: 0.2s;
+
+            z-index: 5;
+        }
+
+        .nail:hover {
+            transform: scale(1.08);
+        }
+
+        .nail.selected {
+            outline: 4px solid #c02672;
+        }
+
+        .nail1 {
+            left: 17px;
+            top: -100px;
+            transform: rotate(-20deg);
+        }
+
+        .nail2 {
+            left: 72px;
+            top: -140px;
+        }
+
+        .nail3 {
+            left: 127px;
+            top: -155px;
+        }
+
+        .nail4 {
+            left: 182px;
+            top: -140px;
+        }
+
+        .nail5 {
+            left: 237px;
+            top: -100px;
+            transform: rotate(20deg);
+        }
+
+        /* PAINEL */
+
+        .panel {
+            background: #fff8fc;
+            border-radius: 25px;
+            padding: 20px;
+        }
+
+        .section {
+            margin-bottom: 22px;
+        }
+
+        .section h2 {
+            color: #a21caf;
+            margin-bottom: 12px;
+            font-size: 19px;
+        }
+
+        .colors {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .color {
+            width: 43px;
+            height: 43px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 2px 7px #aaa;
+            cursor: pointer;
+        }
+
+        .color:hover {
+            transform: scale(1.1);
+        }
+
+        .pink {
+            background: #ff4f91;
+        }
+
+        .red {
+            background: #e11d48;
+        }
+
+        .purple {
+            background: #9333ea;
+        }
+
+        .blue {
+            background: #3b82f6;
+        }
+
+        .green {
+            background: #22c55e;
+        }
+
+        .yellow {
+            background: #facc15;
+        }
+
+        .orange {
+            background: #f97316;
+        }
+
+        .black {
+            background: #111827;
+        }
+
+        .white {
+            background: white;
+        }
+
+        .nude {
+            background: #d9a77a;
+        }
+
+        /* BOTÕES */
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        button {
+            border: none;
+            padding: 10px 14px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            background: #f3d1e3;
+            color: #7a1749;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        .finish {
+            width: 100%;
+            background: #c02672;
+            color: white;
+            font-size: 17px;
+            margin-top: 10px;
+        }
+
+        .clear {
+            width: 100%;
+            background: #ddd;
+            color: #333;
+            margin-top: 8px;
+        }
+
+        .score {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 15px;
+            text-align: center;
+            background: #ffe8f3;
+            color: #be185d;
+            font-weight: bold;
+        }
+
+        /* CELULAR */
+
+        @media (max-width: 750px) {
+
+            .game-area {
+                grid-template-columns: 1fr;
+            }
+
+            .hand-area {
+                min-height: 450px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="game">
+
+        <h1>💅 Nail Studio</h1>
+
+        <p class="subtitle">
+            Crie sua própria nail art!
+        </p>
+
+        <div class="game-area">
+
+            <!-- MÃO -->
+
+            <div class="hand-area">
+
+                <div class="hand">
+
+                    <div class="finger finger1"></div>
+                    <div class="finger finger2"></div>
+                    <div class="finger finger3"></div>
+                    <div class="finger finger4"></div>
+                    <div class="finger finger5"></div>
+
+                    <div class="nail nail1" data-id="1"></div>
+                    <div class="nail nail2" data-id="2"></div>
+                    <div class="nail nail3" data-id="3"></div>
+                    <div class="nail nail4" data-id="4"></div>
+                    <div class="nail nail5" data-id="5"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PAINEL -->
+
+            <div class="panel">
+
+                <!-- CORES -->
+
+                <div class="section">
+
+                    <h2>🎨 Escolha o esmalte</h2>
+
+                    <div class="colors">
+
+                        <div class="color pink"
+                            onclick="paint('#ff4f91')"></div>
+
+                        <div class="color red"
+                            onclick="paint('#e11d48')"></div>
+
+                        <div class="color purple"
+                            onclick="paint('#9333ea')"></div>
+
+                        <div class="color blue"
+                            onclick="paint('#3b82f6')"></div>
+
+                        <div class="color green"
+                            onclick="paint('#22c55e')"></div>
+
+                        <div class="color yellow"
+                            onclick="paint('#facc15')"></div>
+
+                        <div class="color orange"
+                            onclick="paint('#f97316')"></div>
+
+                        <div class="color black"
+                            onclick="paint('#111827')"></div>
+
+                        <div class="color white"
+                            onclick="paint('#ffffff')"></div>
+
+                        <div class="color nude"
+                            onclick="paint('#d9a77a')"></div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FORMATO -->
+
+                <div class="section">
+
+                    <h2>💅 Formato</h2>
+
+                    <div class="buttons">
+
+                        <button onclick="changeShape('oval')">
+                            Oval
+                        </button>
+
+                        <button onclick="changeShape('square')">
+                            Quadrada
+                        </button>
+
+                        <button onclick="changeShape('almond')">
+                            Amendoada
+                        </button>
+
+                        <button onclick="changeShape('stiletto')">
+                            Estilete
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DECORAÇÃO -->
+
+                <div class="section">
+
+                    <h2>✨ Decoração</h2>
+
+                    <div class="buttons">
+
+                        <button onclick="decoration('🌸')">
+                            🌸
+                        </button>
+
+                        <button onclick="decoration('💎')">
+                            💎
+                        </button>
+
+                        <button onclick="decoration('⭐')">
+                            ⭐
+                        </button>
+
+                        <button onclick="decoration('💖')">
+                            💖
+                        </button>
+
+                        <button onclick="decoration('✨')">
+                            ✨
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- GLITTER -->
+
+                <div class="section">
+
+                    <h2>✨ Efeito</h2>
+
+                    <div class="buttons">
+
+                        <button onclick="addGlitter()">
+                            Glitter ✨
+                        </button>
+
+                        <button onclick="removeGlitter()">
+                            Remover glitter
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FINALIZAR -->
+
+                <button class="finish" onclick="finishGame()">
+                    💖 Finalizar Nail Art
+                </button>
+
+                <button class="clear" onclick="clearGame()">
+                    🧼 Limpar tudo
+                </button>
+
+
+                <div class="score">
+
+                    ⭐ Pontuação:
+                    <span id="score">0</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        let selectedNail = null;
+
+        let score = 0;
+
+
+        // SELECIONAR UNHA
+
+        const nails = document.querySelectorAll(".nail");
+
+        nails.forEach(function(nail) {
+
+            nail.addEventListener("click", function() {
+
+                nails.forEach(function(n) {
+                    n.classList.remove("selected");
+                });
+
+                nail.classList.add("selected");
+
+                selectedNail = nail;
+
+            });
+
+        });
+
+
+        // PINTAR UNHA
+
+        function paint(color) {
+
+            if (selectedNail === null) {
+
+                alert("💅 Primeiro clique em uma unha!");
+
+                return;
+
+            }
+
+            selectedNail.style.background = color;
+
+            score += 5;
+
+            updateScore();
+
+        }
+
+
+        // FORMATO
+
+        function changeShape(shape) {
+
+            if (selectedNail === null) {
+
+                alert("💅 Primeiro escolha uma unha!");
+
+                return;
+
+            }
+
+            if (shape === "oval") {
+
+                selectedNail.style.borderRadius =
+                    "50%";
+
+            }
+
+            if (shape === "square") {
+
+                selectedNail.style.borderRadius =
+                    "7px";
+
+            }
+
+            if (shape === "almond") {
+
+                selectedNail.style.borderRadius =
+                    "50% 50% 35% 35%";
+
+            }
+
+            if (shape === "stiletto") {
+
+                selectedNail.style.borderRadius =
+                    "50% 50% 0 0";
+
+                selectedNail.style.height = "75px";
+
+            }
+
+            score += 5;
+
+            updateScore();
+
+        }
+
+
+        // DECORAÇÃO
+
+        function decoration(symbol) {
+
+            if (selectedNail === null) {
+
+                alert("💅 Primeiro escolha uma unha!");
+
+                return;
+
+            }
+
+            selectedNail.innerHTML = symbol;
+
+            score += 10;
+
+            updateScore();
+
+        }
+
+
+        // GLITTER
+
+        function addGlitter() {
+
+            if (selectedNail === null) {
+
+                alert("💅 Primeiro escolha uma unha!");
+
+                return;
+
+            }
+
+            selectedNail.style.boxShadow =
+                "0 0 15px 5px rgba(255,215,0,0.8)";
+
+            score += 10;
+
+            updateScore();
+
+        }
+
+
+        // REMOVER GLITTER
+
+        function removeGlitter() {
+
+            if (selectedNail === null) return;
+
+            selectedNail.style.boxShadow = "none";
+
+        }
+
+
+        // LIMPAR
+
+        function clearGame() {
+
+            nails.forEach(function(nail) {
+
+                nail.style.background = "#ffe1d8";
+
+                nail.style.borderRadius =
+                    "25px 25px 15px 15px";
+
+                nail.style.height = "65px";
+
+                nail.style.boxShadow = "none";
+
+                nail.innerHTML = "";
+
+                nail.classList.remove("selected");
+
+            });
+
+            selectedNail = null;
+
+            score = 0;
+
+            updateScore();
+
+        }
+
+
+        // FINALIZAR
+
+        function finishGame() {
+
+            if (score === 0) {
+
+                alert(
+                    "💅 Você ainda não fez sua nail art!"
+                );
+
+                return;
+
+            }
+
+            let finalScore = Math.min(score, 100);
+
+            alert(
+                "💖 NAIL ART FINALIZADA! 💖\n\n" +
+                "⭐ Sua pontuação: " +
+                finalScore +
+                "/100\n\n" +
+                "✨ Parabéns pelo seu design!"
+            );
+
+        }
+
+
+        // ATUALIZAR PONTUAÇÃO
+
+        function updateScore() {
+
+            document.getElementById("score").textContent =
+                Math.min(score, 100);
+
+        }
+
+    </script>
+
+</body>
+
+</html>
